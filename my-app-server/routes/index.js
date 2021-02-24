@@ -1,12 +1,11 @@
-const router = require('koa-router')()
-//封装好的引入mysql方法
-const DB = require('../public/javascripts/mysqlDB')
-const Koa = require('koa');
-const mysql = require('mysql');
-// 引入koa封装好的websocket功能
-const ws = require('koa-websocket')
-const app = new Koa()
 
+
+
+const Koa = require('koa');
+// router.prefix('/users')
+const app = new Koa()
+// 导入
+const router = require('./users')
 // 1.应用级中间件
 // 匹配任何路由, 如果不写next 就不会继续往下匹配
 app.use(async(ctx, next)=>{
@@ -15,65 +14,14 @@ app.use(async(ctx, next)=>{
   console.log('路由匹配完成后又会回到这里');
 
 })
-router.get('/', async (ctx, next) => {
-  ctx.body = 'koa2'
-})
-// 2.路由级中间件
-router.get('/string', async (ctx, next) => {
-
-  console.log('路由级中间件');
-  await next()//继续往下匹配
-
-})
-
-router.get('/string', async (ctx, next) => {
-  ctx.body = 'koa2 string'
-  // 获取传参
-  console.log(ctx.query);
-  console.log(1);
-
-})
-
-router.get('/json', async (ctx, next) => {
-  ctx.body = {
-    title: 'koa2 json'
-  }
-})
-
-router.get('/stuData', async (ctx, next) => {
-  const result = await DB.query('select * from t_user'); //查询数据库
-  console.log(result);
-  ctx.set('Access-Control-Allow-Origin', 'http://localhost:3001'); //配置跨域资源共享
-  ctx.set('Access-Control-Allow-Credentials', 'true');
-  ctx.body = result;
-
-})
-//动态路由
-router.get('/news/:aid', async(ctx)=>{
-  // 获取动态路由的传值
-  console.log(ctx.params);
-  ctx.body='动态路由'
-})
-router.all('koa/ws',(ctx)=>{
-  //客户端链接传过来的客户端身份
-  const { id } = ctx.query
-  wsObj[id] = ctx
-  // 给客户端发送链接成功的信息
-  ctx.websocket.send('连接成功')
-  // 监听客户端发送过来的信息
-  ctx.websocket.on('message', function(message){
-    console.log(message);
-    // uid为接收方, 将接收到的信息发送给接收方uid, 可以根据自己的需求处理数据
-    //  再发送
-    const uid = JSON.parse(message).uid
-    if(!wsObj[uid]){
-    }
-  })
-})
 app.use(router.routes());//启动路由
 /**
  * 可以配置也可以不配置 建议配置
  * 作用: 当所有路由中间件最后调用,根据ctx.status设置response响应头
+ * router.allowedMethods()中间件，主要用于 405 Method Not Allowed 这个状态码相关
+ * 如果不加这个中间件，如果接口是get请求，而前端使用post请求，会返回 404 状态码，接口未定义。
+ * 如果加了这个中间件，这种情况时，会返回405 Method Not Allowed ，
+ * 提示 request method 不匹配，并在响应头返回接口支持的请求方法，更有利于调试 
  */
 app.use(router.allowedMethods());
 app.listen(3001, () => {
