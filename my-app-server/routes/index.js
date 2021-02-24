@@ -6,12 +6,29 @@ const mysql = require('mysql');
 // 引入koa封装好的websocket功能
 const ws = require('koa-websocket')
 const app = new Koa()
+
+// 1.应用级中间件
+// 匹配任何路由, 如果不写next 就不会继续往下匹配
+app.use(async(ctx, next)=>{
+  console.log(new Date())
+  await next()//当前路由匹配完成以后继续向下匹配
+  console.log('路由匹配完成后又会回到这里');
+
+})
 router.get('/', async (ctx, next) => {
   ctx.body = 'koa2'
+})
+// 2.路由级中间件
+router.get('/string', async (ctx, next) => {
+
+  console.log('路由级中间件');
+  await next()//继续往下匹配
+
 })
 
 router.get('/string', async (ctx, next) => {
   ctx.body = 'koa2 string'
+  // 获取传参
   console.log(ctx.query);
   console.log(1);
 
@@ -31,7 +48,12 @@ router.get('/stuData', async (ctx, next) => {
   ctx.body = result;
 
 })
-
+//动态路由
+router.get('/news/:aid', async(ctx)=>{
+  // 获取动态路由的传值
+  console.log(ctx.params);
+  ctx.body='动态路由'
+})
 router.all('koa/ws',(ctx)=>{
   //客户端链接传过来的客户端身份
   const { id } = ctx.query
