@@ -1,20 +1,24 @@
-import {useEffect} from 'react'
-import axios from 'axios'
+import { useEffect } from 'react';
+// import axios from 'axios';
+import { Switch, Route } from 'react-router-dom';
+import Home from './pages/home';
+import Mine from './pages/mine';
 
 function App() {
-  useEffect(()=>{
-    axios.get('/stuData').then(res=>{
-      console.log(res);
-    })
-    axios.get('/list/yinger').then(res=>{
-      console.log(res);
-    })
-  })
+  useEffect(() => {
+    // axios.get('/stuData').then((res) => {
+    //   console.log(res);
+    // });
+    // axios.get('/list/yinger').then((res) => {
+    //   console.log(res);
+    // });
+  });
 
   return (
-    <div className="App">
-      测试
-    </div>
+    <Switch>
+      <Route exact path="/home" component={Home} />
+      <Route exact path="/mine" component={Mine} />
+    </Switch>
   );
 }
 
