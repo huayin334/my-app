@@ -1,11 +1,12 @@
 const router = require('koa-router')()
 //封装好的引入mysql方法
-const DB = require('../public/javascripts/mysqlDB')
+const DB = require('../utils/db')
 
 const mysql = require('mysql');
 // 引入koa封装好的websocket功能
 const ws = require('koa-websocket')
 const list = require('./list');
+const router = require('.');
 
 router.get('/', async (ctx, next) => {
   ctx.body = 'koa2'
@@ -63,5 +64,10 @@ router.all('koa/ws',(ctx)=>{
   })
 })
 router.use('/list', list.routes(), list.allowedMethods())
+
+
+// 路由重定向
+// 从 / 定向到 /home
+router.redirect('/','/home')
 // 导出
 module.exports = router

@@ -3,6 +3,10 @@ const Router = require('koa-router')
 const list = new Router()
 
 //写对应的接口
+list.get('/',async (ctx)=>{
+  ctx.body = "列表页-首页"
+})
+
 list.get('/yinger',async (ctx)=>{
   ctx.body = "列表页-婴儿"
 })
