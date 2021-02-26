@@ -6,16 +6,17 @@ import Mine from './pages/mine'
 import Friends from './pages/friends'
 import Dynamic from './pages/dynamic'
 import Tabs from './components/Tabs'
+import Login from './pages/login'
 import './index.scss'
-
+import axios from 'axios'
 function App() {
   useEffect(() => {
-    // axios.get('/stuData').then((res) => {
-    //   console.log(res);
-    // });
-    // axios.get('/list/yinger').then((res) => {
-    //   console.log(res);
-    // });
+    axios.get('/stuData').then((res) => {
+      console.log(res)
+    })
+    axios.get('/list/yinger').then((res) => {
+      console.log(res)
+    })
   })
 
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route exact path="/mine" component={Mine} />
         <Route exact path="/dynamic" component={Dynamic} />
         <Route exact path="/friends" component={Friends} />
+        <Route exact path="/login" component={Login} />
       </Switch>
       <Tabs></Tabs>
     </div>
