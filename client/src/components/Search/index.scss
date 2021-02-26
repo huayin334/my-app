@@ -1,0 +1,21 @@
+.search{
+  position: relative;
+  width: 100vw;
+  height: 80px;
+  padding-top: 15px;
+  background-color:hsl(0, 0%, 96%);
+  .box{
+    width: 96%;
+    height: 60px;
+    margin: 0 auto;
+    // margin-top: 5px;
+    border-radius: 15px;
+    background-color:#fff;
+  }
+  img{
+    position: absolute;
+    right: 28px;
+    top: 22px;
+    width: 44px;
+  }
+}
