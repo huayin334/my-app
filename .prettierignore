@@ -1,0 +1,8 @@
+*.md
+package.json
+package-lock.json
+yarn.lock
+coverage/
+build/
+node_modules
+*.log

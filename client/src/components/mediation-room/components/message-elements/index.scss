@@ -1,0 +1,68 @@
+.group-tip-element {
+  background: #ffffff;
+  padding: 0.4rem 1.5rem;
+  border-radius: 0.3rem;
+  color: #a5b5c1;
+  font-size: 12px;
+}
+
+.mediate-input-element {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 0.8rem;
+  padding: 1.6rem;
+  margin-left: 1rem;
+
+  .label-container {
+    display: flex;
+    flex-direction: row;
+    .text {
+      font-size: 13px;
+      color: #333333;
+      flex: 1;
+
+      &:last-child {
+        margin-left: 0.3rem;
+      }
+    }
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.7rem;
+    .value {
+      height: 3.7rem;
+      padding: 0.5rem 1rem;
+      font-size: 13px;
+      flex: 1;
+      background: #F6F6F6;
+      border-radius: 0.6rem;
+
+      &:last-child {
+        margin-left: 0.3rem;
+      }
+
+      &::placeholder {
+        font-size: 13px;
+        color: #A4A4A4;
+      }
+    }
+
+  }
+
+  .divider {
+    opacity: 0.42;
+    background: #D8D8D8;
+    height: 1px;
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .submit-btn {
+    height: 3.2rem !important;
+    align-self: flex-end;
+    font-size: 13px !important;
+  }
+}

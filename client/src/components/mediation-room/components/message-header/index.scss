@@ -1,0 +1,26 @@
+.message-header {
+  font-size: 13px;
+  color: #7A7B7E;
+
+  &.left {
+    display: flex;
+    flex-direction: row;
+    margin-left: 1rem;
+  }
+
+  &.right {
+    display: flex;
+    margin-right: 1rem;
+
+    flex-direction: row-reverse;
+  }
+
+  .name {
+    padding: 0 0.4rem;
+    max-width: 10rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+}

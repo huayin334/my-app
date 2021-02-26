@@ -1,0 +1,27 @@
+.message-content {
+  outline: none;
+  font-size: 13px;
+  color: #333333;
+  position: relative;
+  max-width: 35rem;
+  word-wrap: break-word;
+  word-break: break-all;
+  padding: 0.5rem 1rem;
+  span {
+    white-space: pre-line;
+    margin: 0;
+  }
+
+  &.message-received {
+    background-color: #fff;
+    margin-left: 1rem;
+    border-radius: 0.8rem;
+  }
+
+  &.message-send {
+    background-color: #5cadff;
+    margin-right: 1rem;
+    border-radius: 0.8rem;
+    color: #fff;
+  }
+}

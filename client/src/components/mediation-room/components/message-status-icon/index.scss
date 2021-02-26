@@ -1,0 +1,34 @@
+.message-loading {
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  margin-right: 0.8rem;
+  display: inline-block;
+  background: center center no-repeat url('./images/loading-gray.png');
+  background-size: 1.6rem 1.6rem;
+  -webkit-animation: rotate 1s linear infinite;
+  animation: rotate 1s linear infinite;
+}
+
+.message-send-fail {
+  margin-right: 0.8rem;
+  background-color: #f35f5f;
+  color: #ffffff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 1.6rem;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

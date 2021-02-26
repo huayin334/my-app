@@ -1,0 +1,111 @@
+html,body,#root {
+  height: 100%;
+}
+.current-conversation-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  .header {
+    top: 4.4rem;
+    position: fixed;
+    width: 100%;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem 0.8rem 1.5rem;
+    z-index: 40;
+    &.wechat {
+      top: 0;
+    }
+
+    .title {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      font-size: 15px;
+      color: #333333;
+      font-weight: bold;
+    }
+
+    .extra {
+      font-size: 14px;
+      color: #0AC7F9;
+    }
+  }
+
+
+  .current-conversation {
+    display: flex;
+    flex-direction: column;
+    padding-top: 4rem;
+    background-color: #EFF1F2;
+    color: #1c2438;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+
+    &.wechat {
+      padding-top: 4rem;
+    }
+    .content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+
+      .more {
+        color: #409eff;
+        display: flex;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+      }
+
+      .no-more {
+        display: flex;
+        justify-content: center;
+        color: #a5b5c1;
+        font-size: 12px;
+        padding: 0.5rem 1rem;
+      }
+
+      .message-list {
+        width: 100%;
+        box-sizing: border-box;
+        overflow-y: scroll;
+        padding: 0 2rem;
+      }
+
+      .new-message-tips {
+        position: absolute;
+        cursor: pointer;
+        padding: 0.5rem;
+        width: 12rem;
+        margin: auto;
+        left: 0;
+        right: 0;
+        bottom: 0.5rem;
+        font-size: 12px;
+        text-align: center;
+        border-radius: 1rem;
+        border: #e9eaec 1px solid;
+        background-color: #ffffff;
+        color: #5cadff;
+      }
+    }
+    .footer {
+      width: 100%;
+      background: #F6F6F6;
+    }
+  }
+
+  .picker-input-area {
+    display: none;
+  }
+}
