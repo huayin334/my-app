@@ -8,8 +8,9 @@ import dingwei from './images/dingwei.png'
 import dingwei_active from './images/dingwei_active.png'
 import wode from './images/wode.png'
 import wode_active from './images/wode_active.png'
-
-export default function Tabs() {
+import { useHistory } from 'react-router-dom'
+export default function Tabs(props) {
+  let history = useHistory()
   const [activenum, setActivenum] = useState(0)
   const list = [
     { name: '消息', icon: xiaoxi, icon_active: xiaoxi_active },
@@ -19,6 +20,25 @@ export default function Tabs() {
   ]
   const toDetail = (index) => {
     setActivenum(index)
+    let url = ''
+    switch (index) {
+      case 0:
+        url = '/home'
+        break
+      case 1:
+        url = '/friends'
+        break
+      case 2:
+        url = '/dynamic'
+        break
+      case 3:
+        url = '/mine'
+        break
+      default:
+        url = '/home'
+    }
+    history.push(url)
+    console.log(props)
   }
   return (
     <div className={'tab'}>

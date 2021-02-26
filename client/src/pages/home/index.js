@@ -1,10 +1,6 @@
-import React from 'react';
-import Tabs from '../../components/Tabs';
+import React from 'react'
+import './index.scss'
+
 export default function Home() {
-  return (
-    <div>
-      home组
-      <Tabs></Tabs>
-    </div>
-  );
+  return <div className="test">home组</div>
 }

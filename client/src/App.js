@@ -1,8 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect } from 'react'
 // import axios from 'axios';
-import { Switch, Route } from 'react-router-dom';
-import Home from './pages/home';
-import Mine from './pages/mine';
+import { Switch, Route } from 'react-router-dom'
+import Home from './pages/home'
+import Mine from './pages/mine'
+import Friends from './pages/friends'
+import Dynamic from './pages/dynamic'
+import Tabs from './components/Tabs'
+import './index.scss'
 
 function App() {
   useEffect(() => {
@@ -12,14 +16,19 @@ function App() {
     // axios.get('/list/yinger').then((res) => {
     //   console.log(res);
     // });
-  });
+  })
 
   return (
-    <Switch>
-      <Route exact path="/home" component={Home} />
-      <Route exact path="/mine" component={Mine} />
-    </Switch>
-  );
+    <div className="box">
+      <Switch>
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/mine" component={Mine} />
+        <Route exact path="/dynamic" component={Dynamic} />
+        <Route exact path="/friends" component={Friends} />
+      </Switch>
+      <Tabs></Tabs>
+    </div>
+  )
 }
 
-export default App;
+export default App
