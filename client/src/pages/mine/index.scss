@@ -1,0 +1,41 @@
+.mine{
+  position: relative;
+  // 我的资料
+  .personal{
+    position: absolute;
+    display: flex;
+    top: 20px;
+    left: 20px;
+    width: 700px;
+    margin: 0 auto;
+    height: 210px;
+    background-color: #fff;
+    padding-top: 20px;
+    border-radius: 20px;
+    box-shadow: -1px 3px 25px #d7d7d7;
+    color: #999;
+    img{
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      margin: 5px;
+    }
+  }
+  // 我的动态
+  .dynamic{
+    position: absolute;
+    display: flex;
+    top: 280px;
+    left: 20px;
+    width: 700px;
+    margin: 0 auto;
+    height: 210px;
+    background-color: #fff;
+    padding-top: 20px;
+    border-radius: 20px;
+    box-shadow: -1px 3px 25px #d7d7d7;
+    color: #999;
+    padding-left: 30px;
+    box-sizing: border-box;
+  }
+}
