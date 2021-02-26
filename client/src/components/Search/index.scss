@@ -8,9 +8,32 @@
     width: 96%;
     height: 60px;
     margin: 0 auto;
-    // margin-top: 5px;
     border-radius: 15px;
     background-color:#fff;
+    padding-left: 10px;
+    // 去除默认样式
+    input{  
+      background:none;  
+      outline:none;  
+      border:0px;
+      height: 60px;
+      width: 90%;
+    }
+   /* 清除IE10及以上版本input的叉叉（X）和密码输入框的眼睛图标 */
+    input::-ms-clear {
+      display: none;
+    }
+    input::-ms-reveal {
+      display: none;
+    }
+  /*清除谷歌浏览器下的 search 叉号 */
+    input[type=search]::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+    }
+  /*清除IE下的 search 叉号 */
+    input[type=search]::-ms-clear {
+      display: none;
+    }
   }
   img{
     position: absolute;
