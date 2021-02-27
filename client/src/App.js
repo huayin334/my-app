@@ -11,12 +11,12 @@ import './index.scss'
 import axios from 'axios'
 function App() {
   useEffect(() => {
-    axios.get('/stuData').then((res) => {
-      console.log(res)
-    })
-    axios.get('/list/yinger').then((res) => {
-      console.log(res)
-    })
+    // axios.get('/stuData').then((res) => {
+    //   console.log(res)
+    // })
+    // axios.get('/list/yinger').then((res) => {
+    //   console.log(res)
+    // })
   })
 
   return (

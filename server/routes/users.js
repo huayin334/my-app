@@ -7,6 +7,21 @@ const mysql = require('mysql')
 const ws = require('koa-websocket')
 const list = require('./list')
 const login = require('./login')
+// 异常捕获处理
+const handler = async (ctx, next) => {
+  try {
+    await next()
+  } catch (error) {
+    ctx.response.body = {
+      code: 1,
+      message: '服务器异常',
+      desc: error,
+    }
+  }
+}
+
+// 异常捕获逻辑，一定要放在第一个中间件
+router.use(handler)
 
 router.get('/', async (ctx, next) => {
   ctx.body = 'koa2'
@@ -43,7 +58,7 @@ router.get('/news/:aid', async (ctx) => {
   console.log(ctx.params)
   ctx.body = '动态路由'
 })
-router.all('koa/ws', (ctx) => {
+router.all('koa/ws', async (ctx) => {
   //客户端链接传过来的客户端身份
   const { id } = ctx.query
   wsObj[id] = ctx
