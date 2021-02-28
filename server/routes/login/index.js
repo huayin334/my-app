@@ -20,6 +20,7 @@ login.get('/getVerificationCode', async (ctx, next) => {
           code: 1,
           data: 'error',
         }
+        console.log(333)
         reject()
         return
       }

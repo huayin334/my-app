@@ -9,15 +9,29 @@ export default function Login() {
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
   const [showMes, setShowMes] = useState('none')
+  const [codeText, setCodeText] = useState('获取验证码')
+  let timer
+  let countdown = 6
 
   const submit = () => {
+    // if (timer) clearTimeout(timer)
     axios.get('/login/getVerificationCode?mail=' + mail).then((res) => {
+      console.log(res)
       if (res.data.code === 0) {
+        //   const timer = setInterval(() => {
+        //     if (countdown > 0) {
+        //       setCodeText(`${countdown - 1}s后获取`)
+        //     } else {
+        //       clearInterval(timer)
+        //     }
+        //   }, 1000)
+
         console.log('成功')
       } else if (res.data.code === 1) {
         console.log('失败')
       }
     })
+    // event.preventDefault()
   }
   const submit1 = () => {
     setMail(document.getElementById('input').value)
@@ -55,66 +69,69 @@ export default function Login() {
         showMes={showMes}
         setShowMes={setShowMes}
       ></Message>
-      <form name="my">
-        <div>
-          <span>邮 箱:</span>
-          <input
-            id="input"
-            type="text"
-            onKeyUp={(e) => {
-              submit1(e)
-            }}
-          ></input>
-        </div>
-        <div>
-          <span>验证码:</span>
-          <input
-            id="mycode"
-            onKeyUp={(e) => {
-              submit1(e)
-            }}
-          ></input>
-        </div>
-        <div>
-          <span>密 码:</span>
-          <input
-            id="pass"
-            onKeyUp={(e) => {
-              submit1(e)
-            }}
-          ></input>
-        </div>
-        <div>
-          <span>昵 称:</span>
-          <input
-            id="name"
-            onKeyUp={(e) => {
-              submit1(e)
-            }}
-          ></input>
-        </div>
-      </form>
-      <button
-        onClick={() => {
-          submit()
-        }}
-      >
-        获取验证码
-      </button>
-      <button
-        onClick={() => {
-          submit2()
-        }}
-      >
-        注册
-      </button>
-      <button
-        onClick={() => {
-          submit3()
-        }}
-      >
-        登录
-      </button>
+      <div>
+        <span>邮 箱:</span>
+        <input
+          id="input"
+          type="text"
+          onKeyUp={(e) => {
+            submit1(e)
+          }}
+        ></input>
+      </div>
+      <div>
+        <span>验证码:</span>
+        <input
+          id="mycode"
+          onKeyUp={(e) => {
+            submit1(e)
+          }}
+        ></input>
+        <button
+          className={'get-code'}
+          onClick={() => {
+            submit()
+          }}
+        >
+          {codeText}
+        </button>
+      </div>
+      <div>
+        <span>密 码:</span>
+        <input
+          id="pass"
+          onKeyUp={(e) => {
+            submit1(e)
+          }}
+        ></input>
+      </div>
+      <div>
+        <span>昵 称:</span>
+        <input
+          id="name"
+          onKeyUp={(e) => {
+            submit1(e)
+          }}
+        ></input>
+      </div>
+      <div className={'btns'}>
+        <button
+          className={'register'}
+          onClick={() => {
+            submit2()
+          }}
+        >
+          注册
+        </button>
+        <button
+          className={'login'}
+          onClick={() => {
+            submit3()
+          }}
+        >
+          登录
+        </button>
+      </div>
     </div>
   )
 }

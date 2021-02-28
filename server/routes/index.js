@@ -5,6 +5,8 @@ const app = new Koa()
 const router = require('./users')
 // 使用koa-bodyparser中间件,post请求可以直接使用ctx.request.body获取请求参数
 var bodyParser = require('koa-bodyparser')
+// 跨域
+const cors = require('koa2-cors')
 app.use(bodyParser())
 // 1.应用级中间件
 // 匹配任何路由, 如果不写next 就不会继续往下匹配
@@ -12,6 +14,21 @@ app.use(async (ctx, next) => {
   console.log(new Date())
   await next() //当前路由匹配完成以后继续向下匹配
   console.log('路由匹配完成后又会回到这里')
+})
+// 设置跨域
+app.use(cors())
+app.use(async (ctx, next) => {
+  ctx.set('Access-Control-Allow-Origin', 'http://localhost:3002')
+  // ctx.set("Access-Control-Allow-Headers", "X-Requested-With")
+  ctx.set(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild'
+  )
+  ctx.set('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS')
+  const start = new Date()
+  await next()
+  const ms = new Date() - start
+  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
 
 app.use(router.routes()) //启动路由

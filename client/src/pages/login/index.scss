@@ -1,22 +1,89 @@
-.mine{
-    form{
-      div{
-        margin-top: 30px;
-        span{
-          margin-right: 20px;
-        }
-        input{
-          width: 500px;
-          height: 80px;
-          border: 1px solid #999;
-          border-radius: 90px;
-          padding:0 20px;
-          font-size: 36px;
-          margin-left: 5px;
-          }
-          input:nth-child(2){
-            margin-left: -10px;
-          }
-      }
+.mine {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 840px;
+  background: #2980b9;
+  background: #c9d6ff;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, rgb(201, 214, 255), rgb(226, 226, 226));
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, rgb(201, 214, 255), rgb(226, 226, 226));
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+  div {
+    position: relative;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    // padding: 0 0 0 50px;
+    width: 86vw;
+    margin: 30px auto 0;
+
+    span {
+      margin-right: 20px;
     }
-} 
+
+    input {
+      width: 440px;
+      height: 80px;
+      border: 0.5px solid #6789ba;
+      border-radius: 36px;
+      padding: 0 20px;
+      font-size: 36px;
+      margin-left: 5px;
+    }
+
+    // input:nth-child(2) {
+    //   margin-left: -10px;
+    // }
+
+    #mycode {
+      margin-left: -5px;
+      width: 30vw;
+    }
+
+    .get-code {
+      position: absolute;
+      right: 5vw;
+      width: 180px;
+      height: 78px;
+      /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, rgb(255, 175, 189), rgb(255, 195, 160));
+      /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, rgb(255, 175, 189), rgb(255, 195, 160));
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      border-radius: 36px;
+      color: #fff;
+      margin-left: 20px;
+    }
+
+  }
+}
+
+.btns {
+  display: flex;
+  justify-content: space-around;
+  width: 70vw !important;
+  margin: 20px auto !important;
+
+  .register,
+  .login {
+    width: 200px;
+    height: 80px;
+    background: #56ccf2;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, rgb(86, 204, 242), rgb(47, 128, 237));
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, rgb(86, 204, 242), rgb(47, 128, 237));
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 52px;
+    color: azure;
+  }
+}

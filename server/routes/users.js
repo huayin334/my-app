@@ -9,21 +9,23 @@ const list = require('./list')
 const login = require('./login')
 // 引入jwt token工具
 const JwtUtil = require('../utils/jwt')
+
 // 异常捕获处理
-// const handler = async (ctx, next) => {
-//   try {
-//     await next()
-//   } catch (error) {
-//     ctx.response.body = {
-//       code: 1,
-//       message: '服务器异常',
-//       desc: error,
-//     }
-//   }
-// }
+const handler = async (ctx, next) => {
+  try {
+    await next()
+  } catch (error) {
+    ctx.response.body = {
+      code: 1,
+      message: '服务器异常',
+      desc: error,
+    }
+  }
+}
 
 // // 异常捕获逻辑，一定要放在第一个中间件
-// router.use(handler)
+router.use(handler)
+
 router.use(async (ctx, next) => {
   console.log(ctx)
   // 我这里知识把登陆和注册请求去掉了，其他的多有请求都需要进行token校验
