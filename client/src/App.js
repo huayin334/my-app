@@ -8,7 +8,7 @@ import Dynamic from './pages/dynamic'
 import Tabs from './components/Tabs'
 import Login from './pages/login'
 import './index.scss'
-import axios from 'axios'
+// import axios from 'axios'
 function App() {
   useEffect(() => {
     // axios.get('/stuData').then((res) => {

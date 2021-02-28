@@ -4,7 +4,7 @@ const { clientdb } = require('../../utils/redis')
 const login = new Router()
 const DB = require('../../utils/db')
 
-// 获取邮箱验证码
+// 获取验证码:获取邮箱验证码
 login.get('/getVerificationCode', async (ctx, next) => {
   // 接收人邮箱
   mailOptions.to = ctx.request.query.mail
@@ -34,7 +34,7 @@ login.get('/getVerificationCode', async (ctx, next) => {
   })
   console.log(ctx.body, '返回的值')
 })
-// 提交邮箱 验证码 密码
+// 用户注册:提交邮箱 验证码 密码
 login.post('/check', async (ctx, next) => {
   console.log(ctx.request.body)
   let params = ctx.request.body
@@ -49,5 +49,9 @@ login.post('/check', async (ctx, next) => {
   } else {
     ctx.body = { code: 1, data: '验证码错误' }
   }
+})
+// 用户登录:查询数据库是否有此人
+login.post('/toLogin', async (ctx, next) => {
+  ctx.body = { code: 0, data: 'success' }
 })
 module.exports = login
