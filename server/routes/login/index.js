@@ -3,6 +3,8 @@ const Router = require('koa-router')
 const { clientdb } = require('../../utils/redis')
 const login = new Router()
 const DB = require('../../utils/db')
+// 引入jwt token工具
+const JwtUtil = require('../../utils/jwt')
 
 // 获取验证码:获取邮箱验证码
 login.get('/getVerificationCode', async (ctx, next) => {
@@ -52,6 +54,77 @@ login.post('/check', async (ctx, next) => {
 })
 // 用户登录:查询数据库是否有此人
 login.post('/toLogin', async (ctx, next) => {
-  ctx.body = { code: 0, data: 'success' }
+  let params = ctx.request.body
+  console.log(ctx.request.body)
+  // 查看是否有这个用户
+  const result = await DB.query(
+    'select * from user where userid=' + `'${params.mail}'`
+  )
+  console.log(result)
+  console.log(result.length)
+  console.log(params.password === result[0].password)
+  console.log(result[0].userid.toString())
+  if (result.length === 0) {
+    ctx.body = { code: 1, data: '用户未注册' }
+  } else {
+    // 用户存在,校验密码
+    if (params.password === result[0].password) {
+      // 登陆成功，添加token验证
+      let _id = result[0].userid.toString()
+      console.log(_id)
+      // 将用户id传入并生成token
+      let jwt = new JwtUtil(_id)
+      console.log(jwt, 'jwt')
+      let token = jwt.generateToken()
+      console.log(token, 'token')
+      // 将 token 返回给客户端
+      ctx.body = { code: 0, data: 'success', token: token }
+    } else {
+      ctx.body = { code: 2, data: '密码错误' }
+    }
+  }
+  console.log(result)
 })
+
+// // 登录
+// router.post('/login', (req, res) => {
+//   var userName = req.body.user
+//   var pass = req.body.pass
+//   new Promise((resolve, reject) => {
+//     // 根据用户名查询用户
+//     users.findOne({ username: userName }).exec((err, result) => {
+//       if (err) {
+//         reject(err)
+//       } else {
+//         resolve(result)
+//       }
+//     })
+//   })
+//     .then((result) => {
+//       console.log(result)
+//       if (result) {
+//         // 密码解密 利用aes
+//         var aes = new AesUtil(result.password)
+//         var password = aes.deCryto()
+//         if (pass == password) {
+//           // 登陆成功，添加token验证
+//           let _id = result._id.toString()
+//           // 将用户id传入并生成token
+//           let jwt = new JwtUtil(_id)
+//           let token = jwt.generateToken()
+//           // 将 token 返回给客户端
+//           res.send({ status: 200, msg: '登陆成功', token: token })
+//         } else {
+//           res.send({ status: 400, msg: '账号密码错误' })
+//         }
+//       } else {
+//         res.send({ status: 404, msg: '账号不存在' })
+//       }
+//     })
+//     .catch((err) => {
+//       console.log(err)
+//       res.send({ status: 500, msg: '账号密码错误' })
+//     })
+// })
+
 module.exports = login

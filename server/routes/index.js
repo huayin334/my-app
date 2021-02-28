@@ -13,6 +13,7 @@ app.use(async (ctx, next) => {
   await next() //当前路由匹配完成以后继续向下匹配
   console.log('路由匹配完成后又会回到这里')
 })
+
 app.use(router.routes()) //启动路由
 /**
  * 可以配置也可以不配置 建议配置

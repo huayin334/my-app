@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-// import axios from 'axios';
+import axios from './utils/axios'
 import { Switch, Route } from 'react-router-dom'
 import Home from './pages/home'
 import Mine from './pages/mine'
@@ -10,7 +10,6 @@ import Login from './pages/login'
 import './index.scss'
 import { useHistory } from 'react-router-dom'
 
-// import axios from 'axios'
 function App() {
   let history = useHistory()
   const [showTabs, setShowTabs] = useState('block')
@@ -20,9 +19,9 @@ function App() {
       setShowTabs('none')
     }
 
-    // axios.get('/stuData').then((res) => {
-    //   console.log(res)
-    // })
+    axios.get('/stuData').then((res) => {
+      console.log(res)
+    })
     // axios.get('/list/yinger').then((res) => {
     //   console.log(res)
     // })

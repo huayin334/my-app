@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
-import axios from 'axios'
+import axios from '../../utils/axios'
 import './index.scss'
 import Message from '../../components/Message'
+import { hex_md5 } from '../../utils/md5'
 export default function Login() {
   const [mail, setMail] = useState('')
   const [code, setCode] = useState('')
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
   const [showMes, setShowMes] = useState('none')
+
   const submit = () => {
     axios.get('/login/getVerificationCode?mail=' + mail).then((res) => {
       if (res.data.code === 0) {
@@ -25,16 +27,23 @@ export default function Login() {
   }
   // 注册
   const submit2 = () => {
-    let data = { mail: mail, mycode: code, password: password, name: name }
+    // 将密码加密后存到数据库,防止数据库泄露时密码泄露
+    let data = {
+      mail: mail,
+      mycode: code,
+      password: hex_md5(password),
+      name: name,
+    }
     axios.post('/login/check', data).then((res) => {
       console.log(res)
     })
   }
   // 登录
   const submit3 = () => {
-    let data = { mail: mail, password: password, name: name }
+    let data = { mail: mail, password: hex_md5(password) }
     axios.post('/login/toLogin', data).then((res) => {
-      console.log(res)
+      console.log(res.data.token)
+      localStorage.setItem('token', res.data.token)
     })
     setShowMes('block')
   }
