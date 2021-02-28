@@ -43,16 +43,18 @@ export default function Tabs(props) {
     console.log(props)
   }
   return (
-    <div className={'tab'} style={{ display: showTabs }}>
-      {list.map((item, index) => (
-        <div key={item.name} onClick={() => toDetail(index)}>
-          <img
-            src={index === activenum ? item.icon_active : item.icon}
-            alt={item.name}
-          ></img>
-          {item.name}
-        </div>
-      ))}
+    <div style={{ display: showTabs }}>
+      <div className={'tab'}>
+        {list.map((item, index) => (
+          <div key={item.name} onClick={() => toDetail(index)}>
+            <img
+              src={index === activenum ? item.icon_active : item.icon}
+              alt={item.name}
+            ></img>
+            {item.name}
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
