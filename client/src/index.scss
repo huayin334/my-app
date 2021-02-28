@@ -1,3 +1,10 @@
+// 全局样式
 body{
   margin: 0;
+  input{
+    // 全局去除默认样式
+    background:none;  
+    outline:none;  
+    border:0px;
+  }
 }

@@ -9,7 +9,9 @@ import dingwei_active from './images/dingwei_active.png'
 import wode from './images/wode.png'
 import wode_active from './images/wode_active.png'
 import { useHistory } from 'react-router-dom'
+import T from 'prop-types'
 export default function Tabs(props) {
+  const { showTabs } = props
   let history = useHistory()
   const [activenum, setActivenum] = useState(0)
   const list = [
@@ -41,7 +43,7 @@ export default function Tabs(props) {
     console.log(props)
   }
   return (
-    <div className={'tab'}>
+    <div className={'tab'} style={{ display: showTabs }}>
       {list.map((item, index) => (
         <div key={item.name} onClick={() => toDetail(index)}>
           <img
@@ -53,4 +55,7 @@ export default function Tabs(props) {
       ))}
     </div>
   )
+}
+Tabs.propTypes = {
+  showTabs: T.string,
 }

@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 // import axios from 'axios';
 import { Switch, Route } from 'react-router-dom'
 import Home from './pages/home'
@@ -8,16 +8,27 @@ import Dynamic from './pages/dynamic'
 import Tabs from './components/Tabs'
 import Login from './pages/login'
 import './index.scss'
+import { useHistory } from 'react-router-dom'
+
 // import axios from 'axios'
 function App() {
+  let history = useHistory()
+  const [showTabs, setShowTabs] = useState('block')
   useEffect(() => {
+    // 有些页面不用显示tabs
+    if (history.location.pathname === '/login') {
+      setShowTabs('none')
+    }
+
     // axios.get('/stuData').then((res) => {
     //   console.log(res)
     // })
     // axios.get('/list/yinger').then((res) => {
     //   console.log(res)
     // })
-  })
+    // 组件卸载时会调用
+    return () => {}
+  }, [history.location.pathname])
 
   return (
     <div className="box">
@@ -28,7 +39,7 @@ function App() {
         <Route exact path="/friends" component={Friends} />
         <Route exact path="/login" component={Login} />
       </Switch>
-      <Tabs></Tabs>
+      <Tabs showTabs={showTabs}></Tabs>
     </div>
   )
 }

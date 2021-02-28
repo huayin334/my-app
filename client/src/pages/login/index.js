@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import './index.scss'
 import Message from '../../components/Message'
 export default function Login() {
   const [mail, setMail] = useState('')
@@ -46,35 +47,43 @@ export default function Login() {
         setShowMes={setShowMes}
       ></Message>
       <form name="my">
-        <div>邮箱</div>
-        <input
-          id="input"
-          type="text"
-          onKeyUp={(e) => {
-            submit1(e)
-          }}
-        ></input>
-        <div>验证码</div>
-        <input
-          id="mycode"
-          onKeyUp={(e) => {
-            submit1(e)
-          }}
-        ></input>
-        <div>密码</div>
-        <input
-          id="pass"
-          onKeyUp={(e) => {
-            submit1(e)
-          }}
-        ></input>
-        <div>昵称</div>
-        <input
-          id="name"
-          onKeyUp={(e) => {
-            submit1(e)
-          }}
-        ></input>
+        <div>
+          <span>邮 箱:</span>
+          <input
+            id="input"
+            type="text"
+            onKeyUp={(e) => {
+              submit1(e)
+            }}
+          ></input>
+        </div>
+        <div>
+          <span>验证码:</span>
+          <input
+            id="mycode"
+            onKeyUp={(e) => {
+              submit1(e)
+            }}
+          ></input>
+        </div>
+        <div>
+          <span>密 码:</span>
+          <input
+            id="pass"
+            onKeyUp={(e) => {
+              submit1(e)
+            }}
+          ></input>
+        </div>
+        <div>
+          <span>昵 称:</span>
+          <input
+            id="name"
+            onKeyUp={(e) => {
+              submit1(e)
+            }}
+          ></input>
+        </div>
       </form>
       <button
         onClick={() => {
