@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import axios from '../../utils/axios'
 import './index.scss'
 import Message from '../../components/Message'
@@ -9,30 +9,38 @@ export default function Login() {
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
   const [showMes, setShowMes] = useState('none')
-  const [codeText, setCodeText] = useState('获取验证码')
-  let timer
-  let countdown = 6
-
+  const [codeText, setCodeText] = useState(0)
+  let timer = useRef()
+  useEffect(() => {
+    // 清除定时器
+    if (codeText <= 0) {
+      clearInterval(timer.current)
+    }
+  }, [codeText])
   const submit = () => {
-    // if (timer) clearTimeout(timer)
+    if (timer.current) clearInterval(timer.current)
     axios.get('/login/getVerificationCode?mail=' + mail).then((res) => {
+      setCodeText(60)
       console.log(res)
       if (res.data.code === 0) {
-        //   const timer = setInterval(() => {
-        //     if (countdown > 0) {
-        //       setCodeText(`${countdown - 1}s后获取`)
-        //     } else {
-        //       clearInterval(timer)
-        //     }
-        //   }, 1000)
+        timer.current = setInterval(() => {
+          if (codeText >= 0) {
+            setCodeText((n) => {
+              return n - 1
+            })
+          } else {
+            clearInterval(timer.current)
+          }
+          console.log(1)
+        }, 1000)
 
         console.log('成功')
       } else if (res.data.code === 1) {
         console.log('失败')
       }
     })
-    // event.preventDefault()
   }
+
   const submit1 = () => {
     setMail(document.getElementById('input').value)
     setCode(document.getElementById('mycode').value)
@@ -92,8 +100,19 @@ export default function Login() {
           onClick={() => {
             submit()
           }}
+          disabled={codeText !== 0}
+          style={
+            codeText !== 0
+              ? {
+                  background:
+                    '-webkit-linear-gradient(to left, rgb(142, 158, 171), rgb(197, 204, 210))',
+                  background:
+                    ' linear-gradient(to left, rgb(142, 158, 171), rgb(197, 204, 210))',
+                }
+              : {}
+          }
         >
-          {codeText}
+          {codeText === 0 ? '获取验证码' : `${codeText}s后获取`}
         </button>
       </div>
       <div>

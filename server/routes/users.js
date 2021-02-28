@@ -27,9 +27,14 @@ const handler = async (ctx, next) => {
 router.use(handler)
 
 router.use(async (ctx, next) => {
-  console.log(ctx)
+  console.log(ctx, 999)
   // 我这里知识把登陆和注册请求去掉了，其他的多有请求都需要进行token校验
-  if (ctx.req.url != '/login/toLogin' && ctx.req.url != '/user/register') {
+  let url = ctx.request.url
+  if (
+    url != '/login/toLogin' &&
+    url != '/user/register' &&
+    !url.includes('/login/getVerificationCode')
+  ) {
     let token = ctx.request.header.authorization
     console.log(token, 'token---')
     console.log(token)
