@@ -31,12 +31,8 @@ export default function Login() {
           } else {
             clearInterval(timer.current)
           }
-          console.log(1)
         }, 1000)
-
-        console.log('成功')
       } else if (res.data.code === 1) {
-        console.log('失败')
       }
     })
   }
