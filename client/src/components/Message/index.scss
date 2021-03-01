@@ -1,7 +1,7 @@
-.message{
+.message {
   width: 380px;
   height: 110px;
-  background-color: rgba(0, 0, 0, 0.05);
+  background: rgba(236, 244, 251, .85);
   border-radius: 10px;
   position: fixed;
   top: 0;
@@ -18,12 +18,27 @@
 }
 
 // 缩放淡入
-@keyframes action_scale{
-	0%{transform: scale(0.2);opacity: 0;}
-	100%{ transform: scale(1);opacity: 1;}
+@keyframes action_scale {
+  0% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
+
 // 缩放淡出
-@keyframes action_scaleOut{
-	0%{transform: scale(1);opacity: 1;}
-	100%{ transform: scale(0.1);opacity: 0;}
+@keyframes action_scaleOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
 }

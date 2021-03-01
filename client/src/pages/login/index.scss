@@ -16,8 +16,26 @@
   background: linear-gradient(to bottom, rgb(201, 214, 255), rgb(226, 226, 226));
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+  .top {
+    display: flex;
+    width: 76vw;
+    height: 60px;
+    margin: auto;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #fff;
+    border: 1px solid #2980b9;
 
-  div {
+    div {
+      width: 50%;
+      height: 100%;
+      text-align: center;
+      line-height: 60px;
+    }
+
+  }
+
+  .input-box {
     position: relative;
     margin-top: 30px;
     display: flex;
@@ -36,7 +54,7 @@
       border: 0.5px solid #6789ba;
       border-radius: 36px;
       padding: 0 20px;
-      font-size: 36px;
+      font-size: 32px;
       margin-left: 5px;
     }
 
@@ -75,8 +93,9 @@
 
   .register,
   .login {
-    width: 200px;
+    width: 400px;
     height: 80px;
+    margin-top: 40px;
     background: #56ccf2;
     /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, rgb(86, 204, 242), rgb(47, 128, 237));
