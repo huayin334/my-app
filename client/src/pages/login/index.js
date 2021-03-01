@@ -141,7 +141,7 @@ export default function Login() {
         showMes={showMes}
         setShowMes={setShowMes}
       ></Message>
-      <div className="mine">
+      <div className="login-mine">
         <div className="top">
           <div
             style={{ background: topColorRes }}

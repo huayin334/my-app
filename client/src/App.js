@@ -16,10 +16,14 @@ function App() {
   useEffect(() => {
     // 第一次加载会执行
     getStatus()
-    // 添加路由监听函数
+    // 添加路由监听函数,每次路由变化都会执行这个方法
     history.listen((historyLocation) => {
-      getStatus()
-      // 每次路由变化都会执行这个方法
+      // 有些页面不用显示tabs
+      if (history.location.pathname === '/login') {
+        setShowTabs('none')
+      } else {
+        setShowTabs('block')
+      }
     })
 
     // 组件卸载时会调用
