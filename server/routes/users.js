@@ -32,7 +32,7 @@ router.use(async (ctx, next) => {
   let url = ctx.request.url
   if (
     url != '/login/toLogin' &&
-    url != '/user/register' &&
+    url != '/login/check' &&
     !url.includes('/login/getVerificationCode')
   ) {
     let token = ctx.request.header.authorization
