@@ -101,4 +101,12 @@ login.post('/toLogin', async (ctx, next) => {
   console.log(result)
 })
 
+// 登录状态
+login.get('/status', async (ctx) => {
+  // ctx.body = {
+  //   code: 0,
+  //   data: '已登录',
+  // }
+})
+
 module.exports = login

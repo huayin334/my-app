@@ -14,21 +14,37 @@ function App() {
   let history = useHistory()
   const [showTabs, setShowTabs] = useState('block')
   useEffect(() => {
-    // 有些页面不用显示tabs
-    if (history.location.pathname === '/login') {
-      setShowTabs('none')
-    }
-
-    axios.get('/stuData').then((res) => {
-      console.log(res)
+    // 第一次加载会执行
+    getStatus()
+    // 添加路由监听函数
+    history.listen((historyLocation) => {
+      getStatus()
+      // 每次路由变化都会执行这个方法
     })
-    // axios.get('/list/yinger').then((res) => {
-    //   console.log(res)
-    // })
+
     // 组件卸载时会调用
     return () => {}
-  }, [history.location.pathname])
-
+  })
+  const getStatus = () => {
+    axios
+      .get('/login/status')
+      .then((res) => {
+        // 用户未登录直接跳转到登录页面
+        if (res.data.status !== 200) {
+          history.push('/login')
+          console.log(history.location.pathname, 1)
+        }
+      })
+      .then(() => {
+        console.log(history.location.pathname, 2)
+        // 有些页面不用显示tabs
+        if (history.location.pathname === '/login') {
+          setShowTabs('none')
+        } else {
+          setShowTabs('block')
+        }
+      })
+  }
   return (
     <div className="box">
       <Switch>

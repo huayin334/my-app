@@ -45,6 +45,8 @@ router.use(async (ctx, next) => {
       console.log(result)
       ctx.body = { status: 403, msg: '登录已过期,请重新登录' }
       // res.render('login.html');
+    } else if (url === '/login/status') {
+      ctx.body = { status: 200, msg: '已登录' }
     } else {
       console.log('next')
       await next()

@@ -18,15 +18,22 @@ export default function Login() {
   const [type, setType] = useState('register')
   let timer = useRef()
   useEffect(() => {
+    let isUnmounted = false
     // 清除定时器
     if (codeText <= 0) {
       clearInterval(timer.current)
     }
     if (mesText === '登录成功') {
       if (timer.current) clearTimeout(timer.current)
-      timer.current = setTimeout(() => {
-        history.push('/home')
-      }, 1000)
+      // 防止在组件卸载后调用
+      if (!isUnmounted) {
+        timer.current = setTimeout(() => {
+          history.push('/home')
+        }, 1000)
+      }
+    }
+    return () => {
+      isUnmounted = true
     }
   }, [codeText, mesText, history])
   const submit = () => {
