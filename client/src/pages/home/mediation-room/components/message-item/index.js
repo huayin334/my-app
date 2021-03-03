@@ -1,7 +1,7 @@
 import React from 'react'
 import T from 'prop-types'
 import { isEmpty } from 'lodash'
-import './index.less'
+import './index.scss'
 import MessageHeader from '../message-header'
 import MessageStatusIcon from '../message-status-icon'
 import TextElement from '../message-elements/text-element'
@@ -13,7 +13,9 @@ export default function MessageItem(props) {
   const { message = {}, myProfile = {}, groupMemberMap = {} } = props
 
   const showMessageHeader = () => {
-    return ![TIM.TYPES.MSG_GRP_TIP, TIM.TYPES.MSG_GRP_SYS_NOTICE].includes(props.message.type)
+    return ![TIM.TYPES.MSG_GRP_TIP, TIM.TYPES.MSG_GRP_SYS_NOTICE].includes(
+      props.message.type
+    )
   }
 
   const isMine = () => {
@@ -43,7 +45,7 @@ export default function MessageItem(props) {
       message: message,
       payload: message.payload,
       myProfile: myProfile,
-      groupMemberMap: groupMemberMap
+      groupMemberMap: groupMemberMap,
     }
     switch (message.type) {
       case TIM.TYPES.MSG_TEXT:
@@ -57,7 +59,7 @@ export default function MessageItem(props) {
     }
   }
 
-  const getCustomElement = params => {
+  const getCustomElement = (params) => {
     const { message = {}, payload } = params
     let customData
     try {
@@ -70,18 +72,23 @@ export default function MessageItem(props) {
     // 创建群消息
     if (payload.data === 'group_create') {
       const payload = {
-        text: `${message.nick || nick}创建调解室`
+        text: `${message.nick || nick}创建调解室`,
       }
       return <TextElement {...params} payload={payload} />
     } else if (!isEmpty(customData)) {
       if (customData.type === CUSTOM_MSG_TYPE.INPUT_AMT_INST) {
-        return <MediateInputElement {...params} payload={{ ...payload, data: customData }} />
+        return (
+          <MediateInputElement
+            {...params}
+            payload={{ ...payload, data: customData }}
+          />
+        )
       } else if (
         customData.type === CUSTOM_MSG_TYPE.RESPONSE_INPUT_AMT_INST ||
         customData.type === CUSTOM_MSG_TYPE.PRIVATE_TEXT
       ) {
         const payload = {
-          text: customData.text
+          text: customData.text,
         }
         return <TextElement {...params} payload={payload} />
       }
@@ -89,7 +96,11 @@ export default function MessageItem(props) {
   }
 
   const getMessagePosition = () => {
-    if ([TIM.TYPES.MSG_GRP_TIP, TIM.TYPES.MSG_GRP_SYS_NOTICE].includes(message.type)) {
+    if (
+      [TIM.TYPES.MSG_GRP_TIP, TIM.TYPES.MSG_GRP_SYS_NOTICE].includes(
+        message.type
+      )
+    ) {
       return 'position-center'
     }
     if (isMine()) {
@@ -132,5 +143,5 @@ MessageItem.propTypes = {
   message: T.object,
   myProfile: T.object,
   groupMemberMap: T.object,
-  onResendMessageSuccess: T.func
+  onResendMessageSuccess: T.func,
 }

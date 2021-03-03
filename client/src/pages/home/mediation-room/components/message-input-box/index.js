@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import TIM from 'tim-js-sdk'
 import T from 'prop-types'
-import './index.less'
+import './index.scss'
 import { Toast, Button } from 'design'
 
 export default function MessageInputBox(props) {
@@ -19,7 +19,7 @@ export default function MessageInputBox(props) {
     onMessageSend &&
       onMessageSend({
         type: TIM.TYPES.MSG_TEXT,
-        value: value
+        value: value,
       })
 
     textRef.current.value = ''
@@ -36,7 +36,7 @@ export default function MessageInputBox(props) {
           textRef.current.style.height = 'auto'
           textRef.current.style.height = target.scrollHeight + 'px'
         }}
-        onKeyDown={event => {
+        onKeyDown={(event) => {
           if (event.keyCode === 13) {
             if (event.ctrlKey) {
               textRef.current.value += '\n'
@@ -55,5 +55,5 @@ export default function MessageInputBox(props) {
 }
 
 MessageInputBox.propTypes = {
-  onMessageSend: T.func
+  onMessageSend: T.func,
 }

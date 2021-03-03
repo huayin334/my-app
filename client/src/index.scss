@@ -2,6 +2,11 @@
 body {
   margin: 0;
 
+  #root {
+    background-color: #f6f6f6;
+    height: 100%;
+  }
+
   input {
     // 全局去除默认样式
     background: none;

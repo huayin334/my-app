@@ -37,9 +37,10 @@ router.use(async (ctx, next) => {
   ) {
     let token = ctx.request.header.authorization
     console.log(token, 'token---')
-    console.log(token)
     let jwt = new JwtUtil(token)
+    console.log(jwt, 'jwt---')
     let result = jwt.verifyToken()
+    console.log(result, 'result---')
     // 如果考验通过就next，否则就返回登陆信息不正确
     if (result == 'err') {
       console.log(result)

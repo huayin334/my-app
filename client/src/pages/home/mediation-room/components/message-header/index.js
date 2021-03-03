@@ -1,7 +1,7 @@
 import React from 'react'
 import T from 'prop-types'
 import { getFullDate } from 'common/utils'
-import './index.less'
+import './index.scss'
 
 export default function MessageHeader(props) {
   const { message = {}, myProfile = {}, groupMemberMap = {} } = props
@@ -34,5 +34,5 @@ export default function MessageHeader(props) {
 MessageHeader.propTypes = {
   message: T.object,
   myProfile: T.object,
-  groupMemberMap: T.object
+  groupMemberMap: T.object,
 }

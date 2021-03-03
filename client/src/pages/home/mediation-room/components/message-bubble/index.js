@@ -1,6 +1,6 @@
 import React from 'react'
 import T from 'prop-types'
-import './index.less'
+import './index.scss'
 
 export default function MessageBubble(props) {
   const getBubbleStyle = () => {
@@ -8,10 +8,14 @@ export default function MessageBubble(props) {
     return isMine ? 'message-send' : 'message-received'
   }
 
-  return <div className={`message-content ${getBubbleStyle()}`}>{props.children}</div>
+  return (
+    <div className={`message-content ${getBubbleStyle()}`}>
+      {props.children}
+    </div>
+  )
 }
 
 MessageBubble.propTypes = {
   isMine: T.bool.isRequired,
-  children: T.element
+  children: T.element,
 }

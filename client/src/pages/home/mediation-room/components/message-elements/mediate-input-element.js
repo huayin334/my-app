@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import axios from 'common/axios'
+import axios from '../../../../../utils/axios'
 import T from 'prop-types'
 import { Toast, Input, Button } from 'design'
-import './index.less'
+import './index.scss'
 
 export default function MediateInputElement(props) {
   const { message = {}, payload, myProfile } = props
@@ -34,9 +34,9 @@ export default function MediateInputElement(props) {
         amount: realAmount,
         installment: parseInt(installment.trim()),
         sequence,
-        currentTipIndex: payload.data.tips
+        currentTipIndex: payload.data.tips,
       })
-      .catch(e => {
+      .catch((e) => {
         Toast.message(e.error)
         setLoading(false)
       })
@@ -60,7 +60,7 @@ export default function MediateInputElement(props) {
           className={'value'}
           placeholder={'请输入1~6期'}
           value={installment}
-          onChange={value => setInstallment(value.replace(/\D/g, ''))}
+          onChange={(value) => setInstallment(value.replace(/\D/g, ''))}
         />
       </div>
       <div className={'divider'} />
@@ -80,5 +80,5 @@ export default function MediateInputElement(props) {
 MediateInputElement.propTypes = {
   myProfile: T.object,
   payload: T.object,
-  message: T.object
+  message: T.object,
 }

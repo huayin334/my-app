@@ -29,7 +29,7 @@ export default function Login() {
       if (!isUnmounted) {
         timer.current = setTimeout(() => {
           history.push('/home')
-        }, 1000)
+        }, 3000)
       }
     }
     return () => {
@@ -119,7 +119,7 @@ export default function Login() {
     return
   }
   // 登录
-  const submit3 = () => {
+  const login = () => {
     let data = { mail: mail, password: hex_md5(password) }
     axios.post('/login/toLogin', data).then((res) => {
       console.log(res)
@@ -133,6 +133,7 @@ export default function Login() {
       setShowMes('block')
     })
   }
+
   return (
     <div>
       <Message
@@ -246,7 +247,7 @@ export default function Login() {
             <button
               className={'login'}
               onClick={() => {
-                submit3()
+                login()
               }}
             >
               登录

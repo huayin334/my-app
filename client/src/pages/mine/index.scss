@@ -1,7 +1,10 @@
-.mine{
+.mine {
   position: relative;
+  background-color: #f6f6f6;
+  height: 100vh;
+
   // 我的资料
-  .personal{
+  .personal {
     position: absolute;
     display: flex;
     top: 20px;
@@ -14,15 +17,17 @@
     border-radius: 20px;
     box-shadow: -1px 3px 25px #d7d7d7;
     color: #999;
-    img{
+
+    img {
       width: 140px;
       height: 140px;
       border-radius: 50%;
       margin: 5px;
     }
   }
+
   // 我的动态
-  .dynamic{
+  .dynamic {
     position: absolute;
     display: flex;
     top: 280px;

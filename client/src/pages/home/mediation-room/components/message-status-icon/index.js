@@ -1,12 +1,12 @@
 import React from 'react'
 import T from 'prop-types'
 import Toast from 'design/toast'
-import './index.less'
+import './index.scss'
 
 export default function MessageStatusIcon(props) {
   const { message = {}, onResendMessageSuccess } = props
 
-  const getMessageIconClass = message => {
+  const getMessageIconClass = (message) => {
     switch (message.status) {
       case 'unSend':
         return 'message-loading'
@@ -21,7 +21,7 @@ export default function MessageStatusIcon(props) {
     if (content === 'message-send-fail') {
       window.tim
         .resendMessage(message)
-        .then(data => onResendMessageSuccess && onResendMessageSuccess(data))
+        .then((data) => onResendMessageSuccess && onResendMessageSuccess(data))
         .catch(() => {
           Toast.message('消息发送失败')
         })
@@ -44,5 +44,5 @@ export default function MessageStatusIcon(props) {
 
 MessageStatusIcon.propTypes = {
   message: T.object,
-  onResendMessageSuccess: T.func
+  onResendMessageSuccess: T.func,
 }

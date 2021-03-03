@@ -33,14 +33,19 @@ function App() {
     axios
       .get('/login/status')
       .then((res) => {
+        console.log(res)
         // 用户未登录直接跳转到登录页面
         if (res.data.status !== 200) {
           history.push('/login')
-          console.log(history.location.pathname, 1)
+        } else if (
+          // 已经登录却还在登录页面,则跳到home页
+          (res.data.status === 200 && history.location.pathname === '/') ||
+          history.location.pathname === '/login'
+        ) {
+          history.push('/home')
         }
       })
       .then(() => {
-        console.log(history.location.pathname, 2)
         // 有些页面不用显示tabs
         if (history.location.pathname === '/login') {
           setShowTabs('none')
@@ -57,6 +62,7 @@ function App() {
         <Route exact path="/dynamic" component={Dynamic} />
         <Route exact path="/friends" component={Friends} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/" component={Login} />
       </Switch>
       <Tabs showTabs={showTabs}></Tabs>
     </div>

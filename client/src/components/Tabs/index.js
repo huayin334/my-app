@@ -17,7 +17,7 @@ export default function Tabs(props) {
   const list = [
     { name: '消息', icon: xiaoxi, icon_active: xiaoxi_active },
     { name: '好友', icon: dianhua, icon_active: dianhua_active },
-    { name: '动态', icon: dingwei, icon_active: dingwei_active },
+    { name: '帖子', icon: dingwei, icon_active: dingwei_active },
     { name: '我的', icon: wode, icon_active: wode_active },
   ]
   const toDetail = (index) => {

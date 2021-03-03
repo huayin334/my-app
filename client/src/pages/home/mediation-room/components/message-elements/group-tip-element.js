@@ -1,7 +1,7 @@
 import React from 'react'
 import T from 'prop-types'
 import TIM from 'tim-js-sdk'
-import './index.less'
+import './index.scss'
 
 export default function GroupTipElement(props) {
   const { message = {}, payload, groupMemberMap } = props
@@ -10,7 +10,10 @@ export default function GroupTipElement(props) {
     const userName =
       (Array.isArray(payload.userIDList) &&
         payload.userIDList
-          .map(item => (groupMemberMap[item] && groupMemberMap[item].nick) || item)
+          .map(
+            (item) =>
+              (groupMemberMap[item] && groupMemberMap[item].nick) || item
+          )
           .join(',')) ||
       message.nick
     switch (message.payload.operationType) {
@@ -31,5 +34,5 @@ export default function GroupTipElement(props) {
 GroupTipElement.propTypes = {
   message: T.object,
   payload: T.object,
-  groupMemberMap: T.object
+  groupMemberMap: T.object,
 }
