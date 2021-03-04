@@ -36,13 +36,13 @@ function App() {
         console.log(res)
         // 用户未登录直接跳转到登录页面
         if (res.data.status !== 200) {
-          history.push('/login')
+          history.replace('/login')
         } else if (
           // 已经登录却还在登录页面,则跳到home页
           (res.data.status === 200 && history.location.pathname === '/') ||
           history.location.pathname === '/login'
         ) {
-          history.push('/home')
+          history.replace('/home')
         }
       })
       .then(() => {

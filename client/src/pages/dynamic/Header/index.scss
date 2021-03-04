@@ -1,0 +1,15 @@
+.dynamic-header {
+  display: flex;
+  padding: 10px;
+
+  .header-item {
+    width: 110px;
+    height: 50px;
+    background-color: #a2d5f2;
+    border-radius: 6px;
+    margin-right: 10px;
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+  }
+}

@@ -2,7 +2,7 @@ import React from 'react'
 import './index.scss'
 import List from './list'
 import Search from '../../components/Search'
-import MediationRoom from './mediation-room'
+// import MediationRoom from './mediation-room'
 
 export default function Home() {
   const list = [
@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <div className="home">
       {/* <MediationRoom></MediationRoom> */}
-      {/* <Search placeholderText="输入搜索聊天内容"></Search>
+      <Search placeholderText="输入搜索聊天内容"></Search>
       {list.map((item, index) => (
         <List
           key={index.toString()}
@@ -36,7 +36,7 @@ export default function Home() {
           name={item.name}
           text={item.text}
         ></List>
-      ))} */}
+      ))}
     </div>
   )
 }

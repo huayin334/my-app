@@ -39,7 +39,7 @@ export default function Tabs(props) {
       default:
         url = '/home'
     }
-    history.push(url)
+    history.replace(url)
     console.log(props)
   }
   return (

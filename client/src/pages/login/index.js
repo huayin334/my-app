@@ -28,7 +28,7 @@ export default function Login() {
       // 防止在组件卸载后调用
       if (!isUnmounted) {
         timer.current = setTimeout(() => {
-          history.push('/home')
+          history.replace('/home')
         }, 3000)
       }
     }
