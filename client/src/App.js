@@ -21,8 +21,6 @@ function App() {
       // 有些页面不用显示tabs
       if (history.location.pathname === '/login') {
         setShowTabs('none')
-      } else {
-        setShowTabs('block')
       }
     })
 
@@ -33,14 +31,15 @@ function App() {
     axios
       .get('/login/status')
       .then((res) => {
-        console.log(res)
+        // console.log(res)
         // 用户未登录直接跳转到登录页面
         if (res.data.status !== 200) {
           history.replace('/login')
         } else if (
           // 已经登录却还在登录页面,则跳到home页
-          (res.data.status === 200 && history.location.pathname === '/') ||
-          history.location.pathname === '/login'
+          res.data.status === 200 &&
+          (history.location.pathname === '/' ||
+            history.location.pathname === '/login')
         ) {
           history.replace('/home')
         }

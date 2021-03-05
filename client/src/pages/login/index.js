@@ -40,7 +40,7 @@ export default function Login() {
     if (timer.current) clearInterval(timer.current)
     axios.get('/login/getVerificationCode?mail=' + mail).then((res) => {
       setCodeText(60)
-      console.log(res)
+      // console.log(res)
       if (res.data.code === 0) {
         timer.current = setInterval(() => {
           if (codeText >= 0) {
@@ -95,7 +95,7 @@ export default function Login() {
           setTopColorLog('#5fabea')
         }
         setShowMes('block')
-        console.log(res)
+        // console.log(res)
       })
     } else {
       if (!name) {
@@ -122,13 +122,13 @@ export default function Login() {
   const login = () => {
     let data = { mail: mail, password: hex_md5(password) }
     axios.post('/login/toLogin', data).then((res) => {
-      console.log(res)
+      // console.log(res)
       if (res.data.code !== 0) {
         setMesText(res.data.data)
       } else {
         setMesText('登录成功')
         localStorage.setItem('token', res.data.token)
-        console.log(history)
+        // console.log(history)
       }
       setShowMes('block')
     })

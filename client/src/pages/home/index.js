@@ -26,7 +26,7 @@ export default function Home() {
     },
   ]
   return (
-    <div className="home">
+    <div className="home" id="home">
       {/* <MediationRoom></MediationRoom> */}
       <Search placeholderText="输入搜索聊天内容"></Search>
       {list.map((item, index) => (
