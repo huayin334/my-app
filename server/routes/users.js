@@ -3,8 +3,6 @@ const router = require('koa-router')()
 const DB = require('../utils/db')
 
 const mysql = require('mysql')
-// 引入koa封装好的websocket功能
-const ws = require('koa-websocket')
 const list = require('./list')
 const login = require('./login')
 // 引入jwt token工具
@@ -105,6 +103,20 @@ router.all('koa/ws', async (ctx) => {
     }
   })
 })
+
+//创建socket接口
+router.all('/kapi/socket/init', async (ctx) => {
+  console.log(ctx, '-----')
+  // const { channel } = ctx.query //客户端调接口会传频道id
+  // console.log(channel)
+  // 给客户端发送链接成功信息
+  ctx.websocket.send('服务器发送的消息')
+  // 监听客户端发送过来的信息
+  ctx.websocket.on('message', function (message) {
+    console.log('接收进来的消息:', message)
+  })
+})
+
 router.use('/list', list.routes(), list.allowedMethods())
 router.use('/login', login.routes(), login.allowedMethods())
 

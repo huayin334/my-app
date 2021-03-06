@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import './index.scss'
 import List from './list'
 import Search from '../../components/Search'
@@ -25,8 +25,40 @@ export default function Home() {
       text: '大佬们帮我看下这个错误',
     },
   ]
+
+  const [mess, setmess] = useState('暂无消息')
+  const [channel] = useState(2)
+  let wsServer
+  const connect = () => {
+    // 创建socket请求，调上面node的接口，传频道id
+    wsServer = new WebSocket(`ws://localhost:3001/test`)
+    wsServer.onopen = function () {
+      console.log('连接成功')
+    }
+    // 接收服务器发送的信息
+    wsServer.onmessage = function (evt) {
+      console.log(evt)
+    }
+  }
+
+  useEffect(() => {
+    connect()
+  })
+  const toSend = () => {
+    let data = { a: 12 }
+    wsServer.send(JSON.stringify(data))
+  }
+
   return (
     <div className="home" id="home">
+      {mess}
+      <botton
+        onClick={() => {
+          toSend()
+        }}
+      >
+        发送
+      </botton>
       {/* <MediationRoom></MediationRoom> */}
       <Search placeholderText="输入搜索聊天内容"></Search>
       {list.map((item, index) => (

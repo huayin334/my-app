@@ -1,6 +1,9 @@
 const Koa = require('koa')
-// router.prefix('/users')
+// koa的中间件对websocket的封装
+const WebSocket = require('ws')
 const app = new Koa()
+const WebSocketApi = require('../utils/ws') //引入封装的ws模块
+
 // 导入
 const router = require('./users')
 // 使用koa-bodyparser中间件,post请求可以直接使用ctx.request.body获取请求参数
@@ -19,7 +22,6 @@ app.use(async (ctx, next) => {
 app.use(cors())
 app.use(async (ctx, next) => {
   ctx.set('Access-Control-Allow-Origin', 'http://localhost:3002')
-  // ctx.set("Access-Control-Allow-Headers", "X-Requested-With")
   ctx.set(
     'Access-Control-Allow-Headers',
     'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild'
@@ -41,8 +43,24 @@ app.use(router.routes()) //启动路由
  * 提示 request method 不匹配，并在响应头返回接口支持的请求方法，更有利于调试
  */
 app.use(router.allowedMethods())
-app.listen(3001, () => {
-  console.log('starting ar port 3001')
+// 注册路由允许使用中间件
+let server = app.listen(3001, () => {
+  console.log('启动在3001端口')
 })
 
+// const server = http.createServer(app.callback())
+
+const wss = new WebSocket.Server({
+  // 同一个端口监听不同的服务
+  server, //挂载到原有服务器上，
+})
+//
+WebSocketApi(wss)
+
 module.exports = router
+
+/**
+ * 注意：wss服务是独立于koa执行的一个服务，虽然他们共用一个端口，但是并不会经过koa中间件，
+ * 所以的koa中间件控制登陆状态将失效，也就是说客户端有可能绕过你的登陆检测就可连接wss，
+ * 所以你有必要使用cookies判断当前用户（在ws.upgradeReq中找）
+ */
