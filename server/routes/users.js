@@ -87,35 +87,6 @@ router.get('/news/:aid', async (ctx) => {
   console.log(ctx.params)
   ctx.body = '动态路由'
 })
-router.all('koa/ws', async (ctx) => {
-  //客户端链接传过来的客户端身份
-  const { id } = ctx.query
-  wsObj[id] = ctx
-  // 给客户端发送链接成功的信息
-  ctx.websocket.send('连接成功')
-  // 监听客户端发送过来的信息
-  ctx.websocket.on('message', function (message) {
-    console.log(message)
-    // uid为接收方, 将接收到的信息发送给接收方uid, 可以根据自己的需求处理数据
-    //  再发送
-    const uid = JSON.parse(message).uid
-    if (!wsObj[uid]) {
-    }
-  })
-})
-
-//创建socket接口
-router.all('/kapi/socket/init', async (ctx) => {
-  console.log(ctx, '-----')
-  // const { channel } = ctx.query //客户端调接口会传频道id
-  // console.log(channel)
-  // 给客户端发送链接成功信息
-  ctx.websocket.send('服务器发送的消息')
-  // 监听客户端发送过来的信息
-  ctx.websocket.on('message', function (message) {
-    console.log('接收进来的消息:', message)
-  })
-})
 
 router.use('/list', list.routes(), list.allowedMethods())
 router.use('/login', login.routes(), login.allowedMethods())

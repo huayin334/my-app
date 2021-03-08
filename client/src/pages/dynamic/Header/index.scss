@@ -1,4 +1,13 @@
 .dynamic-header {
+  text-align: center;
+  height: 100px;
+  line-height: 100px;
+  width: 100vw;
+  background-color: #fff;
+  font-size: 36px;
+}
+
+.dynamic-header-items {
   display: flex;
   padding: 10px;
 

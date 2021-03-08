@@ -26,18 +26,18 @@ export default function Home() {
     },
   ]
 
-  const [mess, setmess] = useState('暂无消息')
-  const [channel] = useState(2)
   let wsServer
   const connect = () => {
     // 创建socket请求，调上面node的接口，传频道id
-    wsServer = new WebSocket(`ws://localhost:3001/test`)
+    wsServer = new WebSocket(
+      `ws://localhost:3001/test?userid=761916205@qq.com&to=2328432@qq.com`
+    )
     wsServer.onopen = function () {
       console.log('连接成功')
     }
     // 接收服务器发送的信息
     wsServer.onmessage = function (evt) {
-      console.log(evt)
+      console.log(JSON.parse(evt.data))
     }
   }
 
@@ -51,7 +51,6 @@ export default function Home() {
 
   return (
     <div className="home" id="home">
-      {mess}
       <botton
         onClick={() => {
           toSend()
