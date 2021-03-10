@@ -1,10 +1,16 @@
 // 全局样式
+html {
+  // font-size: 13Px !important;
+}
+
 body {
   margin: 0;
+  // font-size: 16Px !important;
 
   #root {
     background-color: #f6f6f6;
-    height: 100%;
+    height: 100vh;
+
   }
 
   input {

@@ -129,12 +129,12 @@ module.exports = function (webpackEnv) {
             }),
             // 配置px转rem,实现自适应
             require('postcss-pxtorem')({
-              rootValue: 32,
+              rootValue: 37.5,
               unitPrecision: 5,
               propList: ['*'],
               selectorBlackList: [],
               replace: true,
-              mediaQuery: false,
+              // mediaQuery: false,
               minPixelValue: 12,
             }),
             // Adds PostCSS Normalize as the reset css with default options,

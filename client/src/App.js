@@ -21,6 +21,8 @@ function App() {
       // 有些页面不用显示tabs
       if (history.location.pathname === '/login') {
         setShowTabs('none')
+      } else {
+        setShowTabs('block')
       }
     })
 
