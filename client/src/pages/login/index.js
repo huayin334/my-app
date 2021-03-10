@@ -86,7 +86,7 @@ export default function Login() {
         password: hex_md5(mypassword),
         name: name,
       }
-      axios.post('/login/check', data).then((res) => {
+      axios.post('/login/register', data).then((res) => {
         if (res.data.code !== 0) {
           setMesText(res.data.data)
         } else {

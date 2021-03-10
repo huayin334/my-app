@@ -3,8 +3,7 @@ const router = require('koa-router')()
 const DB = require('../utils/db')
 
 const mysql = require('mysql')
-const list = require('./list')
-const login = require('./login')
+const login = require('../src/controller/login')
 // 引入jwt token工具
 const JwtUtil = require('../utils/jwt')
 
@@ -59,24 +58,6 @@ router.use(async (ctx, next) => {
 router.get('/', async (ctx, next) => {
   ctx.body = 'koa2'
 })
-// 2.路由级中间件
-router.get('/string', async (ctx, next) => {
-  console.log('路由级中间件')
-  await next() //继续往下匹配
-})
-
-router.get('/string', async (ctx, next) => {
-  ctx.body = 'koa2 string'
-  // 获取传参
-  console.log(ctx.query)
-  console.log(1)
-})
-
-router.get('/json', async (ctx, next) => {
-  ctx.body = {
-    title: 'koa2 json',
-  }
-})
 
 router.get('/stuData', async (ctx, next) => {
   ctx.body = { code: 1 }
@@ -88,9 +69,7 @@ router.get('/news/:aid', async (ctx) => {
   ctx.body = '动态路由'
 })
 
-router.use('/list', list.routes(), list.allowedMethods())
 router.use('/login', login.routes(), login.allowedMethods())
-
 // 路由重定向
 // 从 / 定向到 /home
 router.redirect('/', '/home')

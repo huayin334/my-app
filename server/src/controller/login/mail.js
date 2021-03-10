@@ -1,3 +1,4 @@
+// 发送邮件的操作,不是后端接口
 const nodemailer = require('nodemailer')
 
 let transporter = nodemailer.createTransport({
