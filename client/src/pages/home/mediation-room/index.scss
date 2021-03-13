@@ -1,6 +1,6 @@
-html,body,#root {
-  height: 100%;
-}
+// html,body,#root {
+//   height: 100%;
+// }
 .current-conversation-wrapper {
   display: flex;
   flex-direction: column;
@@ -17,6 +17,7 @@ html,body,#root {
     align-items: center;
     padding: 1rem 1.5rem 0.8rem 1.5rem;
     z-index: 40;
+
     &.wechat {
       top: 0;
     }
@@ -51,6 +52,7 @@ html,body,#root {
     &.wechat {
       padding-top: 4rem;
     }
+
     .content {
       display: flex;
       flex: 1;
@@ -99,6 +101,7 @@ html,body,#root {
         color: #5cadff;
       }
     }
+
     .footer {
       width: 100%;
       background: #F6F6F6;
