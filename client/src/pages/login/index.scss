@@ -1,5 +1,6 @@
 .login-mine {
   position: fixed;
+  font-size: 16px;
   top: 0;
   bottom: 0;
   left: 0;
@@ -49,12 +50,11 @@
     }
 
     input {
-      width: 240px;
+      width: 200px;
       height: 40px;
       border: 0.5px solid #6789ba;
       border-radius: 36px;
       padding: 0 20px;
-      font-size: 16px;
       margin-left: 5px;
     }
 
@@ -70,7 +70,7 @@
     .get-code {
       position: absolute;
       right: 5vw;
-      width: 120px;
+      width: 90px;
       height: 48px;
       /* fallback for old browsers */
       background: -webkit-linear-gradient(to right, rgb(255, 175, 189), rgb(255, 195, 160));
