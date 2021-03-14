@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import './index.scss'
 import List from './list'
+import Add from './add'
 import Search from '../../components/Search'
 // import MediationRoom from './mediation-room'
 
@@ -58,6 +59,7 @@ export default function Home() {
       >
         发送
       </botton>
+      <Add></Add>
       {/* <MediationRoom></MediationRoom> */}
       <Search placeholderText="输入搜索聊天内容"></Search>
       {list.map((item, index) => (

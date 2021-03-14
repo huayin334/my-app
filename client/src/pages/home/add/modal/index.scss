@@ -1,0 +1,24 @@
+.home-add-modal {
+  position: absolute;
+  right: -10px;
+  top: 40px;
+  width: 90px;
+  height: 170px;
+  background-color: #555;
+  z-index: 2;
+  border-radius: 10px;
+
+  &::after {
+    display: block;
+    content: '';
+    width: 0px;
+    height: 0px;
+    border-bottom: 8px solid #555;
+    border-top: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+    position: absolute;
+    left: 56px;
+    top: -15px;
+  }
+}
