@@ -6,7 +6,7 @@ function __connection() {
   // 创建一个数据库连接 返回connection对象
   // 由 mysql.createConnection 创建的对象，通过调用对象的方法实现连接、操作数据库、断开数据库连接
   var connection = mysql.createConnection({
-    host: 'localhost',
+    host: '101.37.18.96',
     user: 'root',
     password: '123456',
     database: 'my_app',

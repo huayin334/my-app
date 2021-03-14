@@ -4,6 +4,8 @@ const DB = require('../utils/db')
 
 const mysql = require('mysql')
 const login = require('../src/controller/login')
+const userFriend = require('../src/controller/user-friend')
+
 // 引入jwt token工具
 const JwtUtil = require('../utils/jwt')
 
@@ -70,6 +72,7 @@ router.get('/news/:aid', async (ctx) => {
 })
 
 router.use('/login', login.routes(), login.allowedMethods())
+router.use('/userFriend', userFriend.routes(), userFriend.allowedMethods())
 // 路由重定向
 // 从 / 定向到 /home
 router.redirect('/', '/home')

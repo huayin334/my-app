@@ -1,5 +1,4 @@
 const Koa = require('koa')
-// koa的中间件对websocket的封装
 const WebSocket = require('ws')
 const app = new Koa()
 const WebSocketApi = require('../utils/ws') //引入封装的ws模块

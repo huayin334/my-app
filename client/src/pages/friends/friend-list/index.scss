@@ -1,0 +1,16 @@
+.friend-item {
+  position: relative;
+  height: 40px;
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+
+
+  .avatar {
+    position: relative;
+    width: 45px;
+    margin-right: 10px;
+  }
+}
