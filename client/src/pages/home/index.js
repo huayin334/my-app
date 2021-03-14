@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './index.scss'
 import List from './list'
 import Add from './add'
@@ -6,6 +6,7 @@ import Search from '../../components/Search'
 // import MediationRoom from './mediation-room'
 
 export default function Home() {
+  // const [userid, setUserid] = useState('')
   const list = [
     {
       url:
@@ -29,9 +30,11 @@ export default function Home() {
 
   let wsServer
   const connect = () => {
+    // 获取userid
+    // setUserid(localStorage.getItem('userid'))
     // 创建socket请求，调上面node的接口，传频道id
     wsServer = new WebSocket(
-      `ws://localhost:3001/test?userid=761916205@qq.com&to=2328432@qq.com`
+      `ws://localhost:3001/test?userid=${localStorage.getItem('userid')}`
     )
     wsServer.onopen = function () {
       console.log('连接成功')
@@ -41,10 +44,10 @@ export default function Home() {
       console.log(JSON.parse(evt.data))
     }
   }
-
   useEffect(() => {
     connect()
-  })
+    console.log(localStorage.getItem('userid'))
+  }, [])
   const toSend = () => {
     let data = { a: 12 }
     wsServer.send(JSON.stringify(data))

@@ -128,6 +128,7 @@ export default function Login() {
       } else {
         setMesText('登录成功')
         localStorage.setItem('token', res.data.token)
+        localStorage.setItem('userid', mail)
         // console.log(history)
       }
       setShowMes('block')
