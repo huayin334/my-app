@@ -1,6 +1,26 @@
 .dynamic {
   margin: 0;
-  height: 100vh;
+  padding-bottom: 60px;
 
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .content {
+    padding: 100px 0 50px 0;
+  }
+
+}
+
+.content::-webkit-scrollbar {
+  display: none;
+}
+
+.dynamic {
+  -ms-overflow-style: none;
+}
+
+.dynamic {
+  overflow: -moz-scrollbars-none;
 }

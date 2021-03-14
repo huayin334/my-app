@@ -7,9 +7,12 @@ export default function Dynamic() {
   return (
     <div className="dynamic">
       <Header></Header>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
+      <div className="content">
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+      </div>
     </div>
   )
 }

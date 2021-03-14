@@ -1,24 +1,33 @@
 .dynamic-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+}
+
+.dynamic-header-text {
   text-align: center;
-  height: 100px;
-  line-height: 100px;
+  height: 50px;
+  line-height: 50px;
   width: 100vw;
   background-color: #fff;
-  font-size: 36px;
+  font-size: 16px;
 }
 
 .dynamic-header-items {
   display: flex;
   padding: 10px;
+  background-color: #f5f5f5;
 
   .header-item {
-    width: 110px;
-    height: 50px;
+    width: 60px;
+    height: 34px;
     background-color: #a2d5f2;
     border-radius: 6px;
     margin-right: 10px;
     text-align: center;
-    line-height: 50px;
+    line-height: 34px;
     color: #fff;
+    font-size: 16px;
   }
 }

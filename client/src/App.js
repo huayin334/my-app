@@ -56,7 +56,7 @@ function App() {
       })
   }
   return (
-    <div className="box">
+    <div className="app-box">
       <Switch>
         <Route exact path="/home" component={Home} />
         <Route exact path="/mine" component={Mine} />

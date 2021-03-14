@@ -1,6 +1,6 @@
 .card {
   background-color: #fff;
-  height: 340px;
+  height: 200px;
   width: 100%;
   margin-bottom: 20px;
   padding: 20px;
@@ -13,11 +13,12 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    height: 100px;
+    height: 50px;
+    font-size: 16px;
   }
 
   .ans {
-    font-size: 34px;
+    font-size: 16px;
     color: #333;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -36,11 +37,15 @@
       align-items: center;
 
       img {
-        width: 50px;
+        width: 25px;
         margin-right: 4px;
       }
     }
 
 
   }
+}
+
+.card::-webkit-scrollbar {
+  width: 0 !important
 }

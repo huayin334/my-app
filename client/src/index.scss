@@ -6,10 +6,18 @@ html {
 body {
   margin: 0;
   // font-size: 16Px !important;
+  -ms-overflow-style: none;
+  /* IE 10+ */
+  scrollbar-width: none;
 
   #root {
     background-color: #f6f6f6;
-    height: 100vh;
+    overflow: hidden;
+
+    // height: 100vh;
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
   }
 
@@ -24,5 +32,13 @@ body {
     border: 0;
     background-color: transparent;
     outline: none;
+  }
+}
+
+.app-box {
+  width: 375px;
+
+  &::-webkit-scrollbar {
+    display: none !important;
   }
 }

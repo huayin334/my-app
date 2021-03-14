@@ -14,3 +14,7 @@ cd server
 npm i
 npm start
 ```
+
+### 待优化记录
+
++ y轴滚动条隐藏
